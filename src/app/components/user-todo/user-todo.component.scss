@@ -1,0 +1,39 @@
+.todo-modal {
+    .todoItem {
+        text-align: left;
+    }
+    .check-right {
+        text-align: right;
+    }
+    .strike-through {
+        color: #007cbb;
+        text-decoration: line-through
+    }
+    .trash-can {
+        display: inline-block;
+        color: #007cbb;
+        cursor: pointer;
+    }
+    .full-width {
+        width: 100%;
+    }
+    .disable-icon {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    thead {
+        th {
+            background-color: #007cbb;
+            color: #fff;
+        }
+    }
+    .modal-title {
+        color: #007cbb;
+    }
+    .ie-footer {
+        display: block;
+        .ie-footer-sm-12 {
+            text-align: right;
+        }
+    }
+}

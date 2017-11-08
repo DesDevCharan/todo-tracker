@@ -1,0 +1,30 @@
+<div class="row user-card">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngFor='let x of userData'>
+        <div class="card">
+            <div class="card-header">
+                {{x.name}}
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    Call me as <strong><i>{{x.username}}</i></strong>
+                </div>
+                <div class="card-text">
+
+                    <ul class="list-unstyled user-info">
+                        <li>E-mail: <a target="_top" [href]="'mailto:'+x.email+'?Subject=Charan%20Here'">{{x.email}}</a></li>
+                        <li>Website:
+                            <a target="_blank" [href]="'http://www.'+x.website">{{x.website}}</a>
+                        </li>
+                        <li>Mobile: {{x.phone | phone}}</li>
+                        <li>Address: {{x.address.street}}, {{x.address.suite}}, {{x.address.city}}, {{x.address.zipcode}}
+                        </li>
+                        <li>Company: {{x.company.name}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-link" routerLink="/todo-list" routerLinkActive="active" (click)='viewTodos(x)'>View Todos</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div *ngIf='closeClicked'>
+    <div class="modal todo-modal" *ngIf='_httpService.todoData.length>0'>
+        <div class="modal-dialog modal-lg fadeDown in" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" type="button" (click)='closeClicked = !closeClicked' routerLink="/users" routerLinkActive="active">
+                  X
+              </button>
+                    <h3 class="modal-title">Todos For {{_httpService.user.username}}</h3>
+                    <div class="alert alert-success" *ngIf='showAlert'>
+                        <div class="alert-items">
+                            <div class="alert-item static">
+                                <div class="alert-icon-wrapper">
+                                    <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                                </div>
+                                <span class="alert-text">{{todoAlert}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th class="left">List of Items</th>
+                                <th>Delete</th>
+                                <th>Completed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let todo of _httpService.todoData'>
+                                <td class="left" [ngClass]="[todo.completed == true ? 'todoItem strike-through' : 'todoItem']">{{todo.title}}</td>
+                                <td>
+                                    <clr-icon shape="trash" size="24" class="trash-can" (click)='deleteTodo(todo)' [ngClass]="[todo.disable == true ? 'trash-can disable-icon' : 'trash-can']"></clr-icon>
+                                </td>
+                                <td>
+                                    <div class="checkbox">
+                                        <input type="checkbox" [id]="todo.id" [checked]='todo.completed' (change)="updateTodo(todo);">
+                                        <label [for]="todo.id"></label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer ie-footer">
+                    <div class="row pull-right">
+                        <div class="col-sm-12 ie-footer-sm-12">
+                            <input type="text" id="todoItem" [(ngModel)]='todoTitle' placeholder="Create your Todo">
+                            <button class="btn btn-primary" type="button" (click)='createTodo()'>Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade in" aria-hidden="true"></div>
+</div>
